@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BP System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+
+  <!-- LEFT SIDE (IMAGE SECTION) -->
+  <div class="hidden md:flex w-1/2 bg-blue-600 items-center justify-center">
+    <div class="text-center text-white px-10">
+      
+      <img src="https://img.freepik.com/free-vector/doctor-checking-blood-pressure-patient_23-2148507802.jpg"
+           class="rounded-xl shadow-lg mb-6">
+
+      <h1 class="text-3xl font-bold mb-3">AI BP Prediction System</h1>
+      <p class="text-lg">
+        Smart healthcare system to predict blood pressure levels using AI.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE (LOGIN FORM) -->
+  <div class="flex w-full md:w-1/2 items-center justify-center">
+
+    <div class="bg-white p-10 rounded-2xl shadow-xl w-96">
+
+      <!-- LOGIN -->
+      <div id="loginForm">
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-700">Login</h2>
+
+        <input id="loginEmail" placeholder="Email"
+          class="w-full p-3 border mb-4 rounded-lg">
+
+        <input id="loginPassword" type="password" placeholder="Password"
+          class="w-full p-3 border mb-4 rounded-lg">
+
+        <button onclick="login()"
+          class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700">
+          Login
+        </button>
+
+        <p class="text-center mt-4 text-gray-600">
+          New user?
+          <span onclick="showSignup()" class="text-blue-600 cursor-pointer font-semibold">
+            Sign Up
+          </span>
+        </p>
+
+        <p id="loginMsg" class="text-red-500 mt-2 text-center"></p>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="signupForm" class="hidden">
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-700">Sign Up</h2>
+
+        <input id="signupEmail" placeholder="Email"
+          class="w-full p-3 border mb-4 rounded-lg">
+
+        <input id="signupPassword" type="password" placeholder="Password"
+          class="w-full p-3 border mb-4 rounded-lg">
+
+        <button onclick="signup()"
+          class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700">
+          Sign Up
+        </button>
+
+        <p class="text-center mt-4 text-gray-600">
+          Already have an account?
+          <span onclick="showLogin()" class="text-blue-600 cursor-pointer font-semibold">
+            Login
+          </span>
+        </p>
+
+        <p id="signupMsg" class="text-red-500 mt-2 text-center"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js')}}"></script>
+</body>
+</html>

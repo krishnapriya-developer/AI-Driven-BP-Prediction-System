@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex">
+
+  <!-- Sidebar -->
+  <div class="w-64 bg-gradient-to-b from-blue-600 to-indigo-700 text-white h-screen p-6">
+    <h2 class="text-2xl font-bold mb-8">💙 BP System</h2>
+
+    <button onclick="logout()" 
+      class="bg-red-500 px-4 py-2 rounded hover:bg-red-600">
+      Logout
+    </button>
+  </div>
+
+  <!-- Main -->
+  <div class="flex-1 p-8">
+
+    <h1 class="text-3xl font-bold mb-6 text-gray-700">Dashboard</h1>
+
+    <!-- Prediction -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">🧠 BP Prediction</h2>
+
+      <div class="grid grid-cols-2 gap-4">
+        <input id="age" placeholder="Age" class="p-3 border rounded-lg" type ="number">
+        <input id="height" placeholder="Height" class="p-3 border rounded-lg" type="number">
+        <input id="weight" placeholder="Weight" class="p-3 border rounded-lg" type="number">
+        <input id="ap_hi" placeholder="Systolic" class="p-3 border rounded-lg" type="number">
+        <input id="ap_lo" placeholder="Diastolic" class="p-3 border rounded-lg" type="number">
+      </div>
+
+      <button onclick="predict()" 
+        class="mt-5 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">
+        Predict
+      </button>
+
+      <div id="resultCard" class="mt-6 hidden bg-blue-100 p-4 rounded-lg">
+        <h3 id="result" class="text-lg font-bold text-blue-700"></h3>
+      </div>
+    </div>
+
+    <!-- Patient History -->
+    <div class="mt-8 bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">📋 Patient History</h2>
+
+      <table class="w-full border">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="p-2">Age</th>
+            <th class="p-2">Height</th>
+            <th class="p-2">Weight</th>
+            <th class="p-2">Sys</th>
+            <th class="p-2">Dia</th>
+            <th class="p-2">Result</th>
+          </tr>
+        </thead>
+        <tbody id="tableData"></tbody>
+      </table>
+    </div>
+
+    <!-- Chart -->
+    <canvas id="myChart" class="mt-8"></canvas>
+
+  </div>
+</div>
+<div class="mt-10 bg-white p-6 rounded-xl shadow">
+  <h2 class="text-xl font-semibold mb-4">🤖 AI Health Assistant</h2>
+
+  <!-- Chat Box -->
+  <div id="chatBox" class="h-64 overflow-y-auto border rounded-lg p-4 bg-gray-50 mb-4"></div>
+
+  <!-- Input -->
+  <div class="flex gap-2">
+    <input id="chatInput" type="text" placeholder="Ask about BP..."
+      class="flex-1 p-3 border rounded-lg focus:outline-none">
+
+    <button onclick="sendMessage()"
+      class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+      Send
+    </button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static',filename='script.js') }}"></script>
+</body>
+</html>
